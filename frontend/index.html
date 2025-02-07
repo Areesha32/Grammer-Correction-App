@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grammar Correction App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="login-section">
+      <h2>Login</h2>
+      <input id="username" type="text" placeholder="Username" />
+      <input id="password" type="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+
+    <div id="app" style="display: none">
+      <h2>Grammar Checker</h2>
+
+      <h4>Live Preview (Errors Highlighted):</h4>
+      <div id="output" class="output-box"></div>
+
+      <h4>Fully Corrected Sentence:</h4>
+      <div id="corrected-output" class="corrected-box"></div>
+
+      <textarea id="text-input" placeholder="Enter text..."></textarea>
+
+      <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
