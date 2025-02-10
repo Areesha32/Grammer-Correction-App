@@ -38,16 +38,24 @@ app.post("/login", (req, res) => {
 
 app.post("/register", (req, res) => {
   const { username, password } = req.body;
-  db.run(
-    "INSERT INTO users (username, password) VALUES (?, ?)",
-    [username, password],
-    function (err) {
-      if (err) {
-        return res.status(500).json({ error: "Registration failed" });
-      }
-      res.json({ message: "User registered" });
+
+  // Check if user already exists
+  db.get("SELECT * FROM users WHERE username = ?", [username], (err, user) => {
+    if (user) {
+      return res.status(400).json({ error: "Username already taken" });
     }
-  );
+
+    db.run(
+      "INSERT INTO users (username, password) VALUES (?, ?)",
+      [username, password],
+      function (err) {
+        if (err) {
+          return res.status(500).json({ error: "Registration failed" });
+        }
+        res.json({ message: "User registered successfully" });
+      }
+    );
+  });
 });
 
 app.post("/check-grammar", async (req, res) => {
