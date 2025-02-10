@@ -6,8 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "node backend/server.js",
-    "postinstall": "npm install --omit=dev" 
+    "start": "node backend/server.js"
   },
   "keywords": [],
   "author": "",
